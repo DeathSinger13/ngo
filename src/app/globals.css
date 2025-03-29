@@ -1,26 +1,224 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 142 76% 36%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217 92% 51%;
+    --secondary-foreground: 210 40% 98%;
+    --tertiary: 47 95% 57%;
+    --tertiary-foreground: 222.2 84% 4.9%;
+    --accent1: 346 84% 61%;
+    --accent1-foreground: 210 40% 98%;
+    --accent2: 262 83% 58%;
+    --accent2-foreground: 210 40% 98%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 142 76% 36%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 142 70% 50%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217 92% 61%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --tertiary: 47 95% 67%;
+    --tertiary-foreground: 222.2 84% 4.9%;
+    --accent1: 346 84% 71%;
+    --accent1-foreground: 222.2 84% 4.9%;
+    --accent2: 262 83% 68%;
+    --accent2-foreground: 222.2 84% 4.9%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 142 70% 50%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground overflow-x-hidden no-scrollbar;
+  }
 }
+
+@layer utilities {
+  .gradient-heading {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-tertiary;
+  }
+
+  .colored-card {
+    @apply border-0 shadow-md transition-all duration-300;
+  }
+
+  .colored-card-primary {
+    @apply bg-primary/10 hover:bg-primary/15;
+  }
+
+  .colored-card-secondary {
+    @apply bg-secondary/10 hover:bg-secondary/15;
+  }
+
+  .colored-card-tertiary {
+    @apply bg-tertiary/10 hover:bg-tertiary/15;
+  }
+
+  .colored-card-accent1 {
+    @apply bg-accent1/10 hover:bg-accent1/15;
+  }
+
+  .colored-card-accent2 {
+    @apply bg-accent2/10 hover:bg-accent2/15;
+  }
+
+  .colored-icon {
+    @apply flex items-center justify-center rounded-full;
+  }
+
+  .colored-icon-primary {
+    @apply bg-primary/10 text-primary;
+  }
+
+  .colored-icon-secondary {
+    @apply bg-secondary/10 text-secondary;
+  }
+
+  .colored-icon-tertiary {
+    @apply bg-tertiary/10 text-tertiary;
+  }
+
+  .colored-icon-accent1 {
+    @apply bg-accent1/10 text-accent1;
+  }
+
+  .colored-icon-accent2 {
+    @apply bg-accent2/10 text-accent2;
+  }
+
+  .colored-button {
+    @apply rounded-full transition-all duration-300;
+  }
+
+  .colored-button-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  }
+
+  .colored-button-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/90;
+  }
+
+  .colored-button-tertiary {
+    @apply bg-tertiary text-tertiary-foreground hover:bg-tertiary/90;
+  }
+
+  .colored-button-accent1 {
+    @apply bg-accent1 text-accent1-foreground hover:bg-accent1/90;
+  }
+
+  .colored-button-accent2 {
+    @apply bg-accent2 text-accent2-foreground hover:bg-accent2/90;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+
+  .color-dot {
+    @apply inline-block w-3 h-3 rounded-full mr-2;
+  }
+
+  .color-dot-primary {
+    @apply bg-primary;
+  }
+
+  .color-dot-secondary {
+    @apply bg-secondary;
+  }
+
+  .color-dot-tertiary {
+    @apply bg-tertiary;
+  }
+
+  .color-dot-accent1 {
+    @apply bg-accent1;
+  }
+
+  .color-dot-accent2 {
+    @apply bg-accent2;
+  }
+
+  .stroke-rainbow-gradient {
+    stroke: url(#curl-gradient);
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+}
+
+@keyframes blob {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(20px, -30px) scale(1.1);
+  }
+  50% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  75% {
+    transform: translate(20px, 30px) scale(1.05);
+  }
+}
+
+@keyframes spin-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-blob {
+  animation: blob 30s infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 30s linear infinite;
+}
+
